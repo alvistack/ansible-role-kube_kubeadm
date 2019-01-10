@@ -33,7 +33,21 @@
 - hosts: all
   remote_user: root
   tasks:
+    - name: start service
+      service:
+        name: docker
+        state: started
+      changed_when: false
+      ignore_errors: yes
+
     - name: kubeadm version
       command: kubeadm version
       register: result
       changed_when: result is not succeeded
+
+    - name: verify connectivity to gcr.io registries
+      command: kubeadm config images pull
+      register: result
+      until: result is succeeded
+      changed_when: result is not succeeded
+      tags: kubeadm
