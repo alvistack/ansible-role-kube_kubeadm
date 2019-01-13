@@ -53,6 +53,7 @@
     state: "{{ item.state | default('directory') }}"
   with_items:
     - { dest: "/usr/local/bin" }
+    - { dest: "/var/lib/kubelet" }
   tags: kubeadm
 
 - name: download archive
