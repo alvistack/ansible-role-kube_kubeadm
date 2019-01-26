@@ -44,6 +44,21 @@
     loop_var: "loop_var"
   tags: kubeadm
 
+- name: prepare directories
+  file:
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0755') }}"
+    state: "{{ item.state | default('directory') }}"
+  with_items:
+    - { dest: "/etc/sysctl.d" }
+    - { dest: "/etc/systemd/system/kubelet.service.d" }
+    - { dest: "/usr/lib/modules-load.d" }
+    - { dest: "/usr/local/bin" }
+    - { dest: "/var/lib/kubelet" }
+  tags: kubeadm
+
 - name: download archive
   get_url:
     url: "{{ kubeadm_download_url }}"
@@ -53,4 +68,33 @@
     mode: "0755"
   register: result
   until: result is succeeded
+  tags: kubeadm
+
+- name: copy templates
+  template:
+    src: "./templates{{ item.dest }}.j2"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  with_items:
+    - { dest: "/etc/sysctl.d/50-kubeadm.conf" }
+    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
+    - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
+  notify:
+    - systemctl daemon-reload
+  tags: kubeadm
+
+- name: prepare files
+  file:
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    state: "{{ item.state | default('file') }}"
+  with_items:
+    - { dest: "/etc/sysctl.d/50-kubeadm.conf" }
+    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
+    - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
+    - { dest: "/usr/local/bin/kubeadm", mode: "0755" }
   tags: kubeadm
