@@ -61,11 +61,11 @@
 
 - name: download archive
   get_url:
-    url: "{{ kubeadm_download_url }}"
-    dest: "/usr/local/bin/kubeadm"
-    owner: "root"
-    group: "root"
-    mode: "0755"
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    checksum: "{{ item.checksum }}"
+  with_items:
+    - "{{ kubeadm_download }}"
   register: result
   until: result is succeeded
   tags: kubeadm
