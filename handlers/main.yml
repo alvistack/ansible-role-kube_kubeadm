@@ -21,3 +21,21 @@
     - ansible_service_mgr == 'systemd'
   changed_when: false
   ignore_errors: true
+
+- name: systemctl restart systemd-modules-load
+  systemd:
+    name: systemd-modules-load
+    state: restarted
+  when:
+    - ansible_service_mgr == 'systemd'
+  changed_when: false
+  ignore_errors: true
+
+- name: sysctl --system
+  shell: |
+    set -o pipefail
+    sysctl --system
+  args:
+    executable: "/bin/bash"
+  changed_when: false
+  ignore_errors: true
