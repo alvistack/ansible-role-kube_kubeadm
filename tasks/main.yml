@@ -83,7 +83,7 @@
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
   notify:
     - systemctl daemon-reload
-    - systemctl restart systemd-modules-load
+    - systemctl restart
     - sysctl --system
   tags: kubeadm
 

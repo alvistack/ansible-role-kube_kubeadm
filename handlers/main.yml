@@ -22,10 +22,13 @@
   changed_when: false
   ignore_errors: true
 
-- name: systemctl restart systemd-modules-load
+- name: systemctl restart
   systemd:
-    name: systemd-modules-load
+    name: "{{ item.name }}"
     state: restarted
+  with_items:
+    - { name: "systemd-modules-load" }
+    - { name: "kubelet" }
   when:
     - ansible_service_mgr == 'systemd'
   changed_when: false
