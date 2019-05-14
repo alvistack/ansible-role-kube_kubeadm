@@ -82,9 +82,9 @@
     - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
   notify:
-    - systemctl daemon-reload
-    - systemctl restart
-    - sysctl --system
+    - kubeadm | systemctl daemon-reload
+    - kubeadm | systemctl restart
+    - kubeadm | sysctl --system
   tags: kubeadm
 
 - name: prepare files
