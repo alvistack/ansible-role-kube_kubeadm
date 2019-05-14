@@ -100,3 +100,7 @@
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
     - { dest: "/usr/local/bin/kubeadm", mode: "0755" }
   tags: kubeadm
+
+- name: flush handlers
+  meta: flush_handlers
+  tags: kubeadm
