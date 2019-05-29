@@ -14,9 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# URL for download kubeadm binary.
-kubeadm_version: "v1.14.1"
-kubeadm_download:
-  url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubeadm_version }}/bin/linux/amd64/kubeadm"
-  dest: "/usr/local/bin/kubeadm"
-  checksum: "sha1:886e607321b4a7bf28d97e7833dcbfbb795d4613"
+# kubeadm version.
+kubeadm_version: "v1.14.2"
+
+# kubeadm download details.
+kubeadm_download: "{{ _kubeadm_download[kubeadm_version] }}"
