@@ -13,3 +13,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+_kubeadm_download:
+  v1.14.2:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.2/bin/linux/amd64/kubeadm"
+    dest: "/usr/local/bin/kubeadm"
+    checksum: "sha1:43537cfa794c7a68fd585f516491faa645c623f0"
+  v1.14.1:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.1/bin/linux/amd64/kubeadm"
+    dest: "/usr/local/bin/kubeadm"
+    checksum: "sha1:886e607321b4a7bf28d97e7833dcbfbb795d4613"
+  v1.13.6:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.13.6/bin/linux/amd64/kubeadm"
+    dest: "/usr/local/bin/kubeadm"
+    checksum: "sha1:8cd947d1abc65bd102ddc258c54a262930634529"
