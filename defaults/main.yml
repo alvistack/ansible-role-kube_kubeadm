@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # kubeadm version.
-kubeadm_version: "v1.14.2"
+kubeadm_version: "v1.14.3"
 
 # kubeadm download details.
 kubeadm_download: "{{ _kubeadm_download[kubeadm_version] }}"
