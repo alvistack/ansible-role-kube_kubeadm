@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubeadm_download:
+  v1.14.3:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kubeadm"
+    dest: "/usr/local/bin/kubeadm"
+    checksum: "sha1:b229b9a1525846013815673a5e58ad4b533c12e4"
   v1.14.2:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.2/bin/linux/amd64/kubeadm"
     dest: "/usr/local/bin/kubeadm"
