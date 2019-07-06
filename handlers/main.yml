@@ -26,7 +26,7 @@
   service:
     name: "{{ item.name }}"
     state: restarted
-  with_items:
+  loop:
     - { name: "systemd-modules-load" }
     - { name: "kubelet" }
   changed_when: false
