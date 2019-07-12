@@ -61,6 +61,7 @@
     - { dest: "/usr/lib/modules-load.d" }
     - { dest: "/usr/local/bin" }
     - { dest: "/var/lib/kubelet" }
+    - { dest: "{{ kubeadm_download.dest | dirname }}" }
   tags: kubeadm
 
 - name: download archive
@@ -72,6 +73,18 @@
     - "{{ kubeadm_download }}"
   register: result
   until: result is succeeded
+  tags: kubeadm
+
+- name: copy archive
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    remote_src: true
+  loop:
+    - { src: "{{ kubeadm_download.dest }}", dest: "/usr/local/bin/kubeadm", mode: "0755" }
   tags: kubeadm
 
 - name: copy templates
