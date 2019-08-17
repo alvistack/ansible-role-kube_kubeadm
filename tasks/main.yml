@@ -71,8 +71,8 @@
     checksum: "{{ item.checksum }}"
   loop:
     - "{{ kubeadm_download }}"
-  register: result
-  until: result is succeeded
+  register: get_url_result
+  until: get_url_result is succeeded
   tags: kubeadm
 
 - name: copy archive
@@ -85,6 +85,7 @@
     remote_src: true
   loop:
     - { src: "{{ kubeadm_download.dest }}", dest: "/usr/local/bin/kubeadm", mode: "0755" }
+  when: get_url_result is changed
   tags: kubeadm
 
 - name: copy templates
