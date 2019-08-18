@@ -17,18 +17,19 @@
 - name: kubeadm | systemctl daemon-reload
   systemd:
     daemon_reload: true
-  when:
-    - ansible_service_mgr == 'systemd'
   changed_when: false
   ignore_errors: true
 
 - name: kubeadm | systemctl restart
-  service:
-    name: "{{ item.name }}"
-    state: restarted
-  loop:
-    - { name: "systemd-modules-load" }
-    - { name: "kubelet" }
+  shell: |
+    set -o pipefail
+    systemctl restart systemd-modules-load
+    systemctl restart kubelet
+  args:
+    executable: "/bin/bash"
+  loop: "{{ ansible_play_hosts }}"
+  delegated_to: "{{ item }}"
+  run_once: true
   changed_when: false
   ignore_errors: true
 
