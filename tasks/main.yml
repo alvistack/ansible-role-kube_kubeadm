@@ -83,6 +83,10 @@
   args:
     executable: "/bin/bash"
   when: get_url_result is changed
+  notify:
+    - kubeadm | systemctl daemon-reload
+    - kubeadm | systemctl restart
+    - kubeadm | sysctl --system
   tags: kubeadm
 
 - name: copy templates
