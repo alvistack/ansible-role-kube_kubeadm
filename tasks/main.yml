@@ -86,7 +86,6 @@
   notify:
     - kubeadm | systemctl daemon-reload
     - kubeadm | systemctl restart
-    - kubeadm | sysctl --system
   tags: kubeadm
 
 - name: copy templates
@@ -97,13 +96,11 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
   loop:
-    - { dest: "/etc/sysctl.d/50-kubeadm.conf" }
     - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
   notify:
     - kubeadm | systemctl daemon-reload
     - kubeadm | systemctl restart
-    - kubeadm | sysctl --system
   tags: kubeadm
 
 - name: prepare files
@@ -114,10 +111,18 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/sysctl.d/50-kubeadm.conf" }
     - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
     - { dest: "/usr/local/bin/kubeadm", mode: "0755" }
+  tags: kubeadm
+
+- name: tweak sysctl entries
+  sysctl:
+    sysctl_file: "{{ item.sysctl_file }}"
+    name: "{{ item.name }}"
+    value: "{{ item.value | default(None) or omit }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ kubeadm_sysctl }}"
   tags: kubeadm
 
 - name: flush handlers

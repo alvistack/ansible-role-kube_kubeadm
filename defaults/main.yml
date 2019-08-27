@@ -19,3 +19,13 @@ kubeadm_version: "v1.15.3"
 
 # kubeadm download details.
 kubeadm_download: "{{ _kubeadm_download[kubeadm_version] }}"
+
+# Entries for sysctl.
+kubeadm_sysctl:
+  - { sysctl_file: "/etc/sysctl.d/50-kubeadm.conf", state: "present", name: "kernel.pid_max", value: "4194303" }
+  - { sysctl_file: "/etc/sysctl.d/50-kubeadm.conf", state: "present", name: "net.bridge.bridge-nf-call-arptables", value: "1" }
+  - { sysctl_file: "/etc/sysctl.d/50-kubeadm.conf", state: "present", name: "net.bridge.bridge-nf-call-ip6tables", value: "1" }
+  - { sysctl_file: "/etc/sysctl.d/50-kubeadm.conf", state: "present", name: "net.bridge.bridge-nf-call-iptables", value: "1" }
+  - { sysctl_file: "/etc/sysctl.d/50-kubeadm.conf", state: "present", name: "net.ipv4.ip_forward", value: "1" }
+  - { sysctl_file: "/etc/sysctl.d/50-kubeadm.conf", state: "present", name: "vm.min_free_kbytes", value: "65536" }
+  - { sysctl_file: "/etc/sysctl.d/50-kubeadm.conf", state: "present", name: "vm.swappiness", value: "0" }

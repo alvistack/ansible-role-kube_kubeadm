@@ -32,12 +32,3 @@
   run_once: true
   changed_when: false
   ignore_errors: true
-
-- name: kubeadm | sysctl --system
-  shell: |
-    set -o pipefail
-    sysctl --system
-  args:
-    executable: "/bin/bash"
-  changed_when: false
-  ignore_errors: true
