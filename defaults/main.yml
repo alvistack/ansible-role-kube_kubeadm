@@ -22,12 +22,12 @@ kubeadm_download: "{{ _kubeadm_download[kubeadm_version] }}"
 
 # Kernel modules.
 kubeadm_modprobe:
-  - { state: "present", line: "options br_netfilter" }
-  - { state: "present", line: "options ip_vs" }
-  - { state: "present", line: "options ip_vs_rr" }
-  - { state: "present", line: "options ip_vs_sh" }
-  - { state: "present", line: "options ip_vs_wrr" }
-  - { state: "present", line: "install nf_conntrack /usr/sbin/modprobe nf_conntrack_ipv4 || /usr/sbin/modprobe nf_conntrack" }
+  - { state: "present", line: "br_netfilter" }
+  - { state: "present", line: "ip_vs" }
+  - { state: "present", line: "ip_vs_rr" }
+  - { state: "present", line: "ip_vs_sh" }
+  - { state: "present", line: "ip_vs_wrr" }
+  - { state: "present", line: "nf_conntrack" }
 
 # Entries for sysctl.
 kubeadm_sysctl:
