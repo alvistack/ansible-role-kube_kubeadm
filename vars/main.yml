@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubeadm_download:
+  v1.16.1:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.1/bin/linux/amd64/kubeadm"
+    dest: "/var/cache/ansible/kubeadm-v1.16.1"
+    checksum: "sha1:311997faaca2c5fc309a82fac2b3cc77927835a6"
   v1.15.4:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.15.4/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/kubeadm-v1.15.4"
