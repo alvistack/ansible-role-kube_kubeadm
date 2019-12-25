@@ -14,8 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Kubernetes version.
+kubernetes_version: "v1.17.0"
+
 # kubeadm version.
-kubeadm_version: "v1.17.0"
+kubeadm_version: "{{ kubernetes_version }}"
 
 # kubeadm download details.
 kubeadm_download: "{{ _kubeadm_download[kubeadm_version] }}"
