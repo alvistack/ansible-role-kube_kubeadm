@@ -23,6 +23,10 @@ _kubeadm_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/kubeadm-v1.17.0"
     checksum: "sha1:343b5264eddbbe731db692952965d48a9a331aa4"
+  v1.16.5:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.5/bin/linux/amd64/kubeadm"
+    dest: "/var/cache/ansible/kubeadm-v1.16.5"
+    checksum: "sha1:3d9e91c15a845007b5d6febff7f678ff4b3f9678"
   v1.16.4:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.4/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/kubeadm-v1.16.4"
