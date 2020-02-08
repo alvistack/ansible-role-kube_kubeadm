@@ -25,3 +25,7 @@
 - name: docker
   src: https://github.com/alvistack/ansible-role-docker
   version: develop
+
+- name: kubelet
+  src: https://github.com/alvistack/ansible-role-kubelet
+  version: develop
