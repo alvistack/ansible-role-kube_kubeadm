@@ -36,8 +36,3 @@
     state: "restarted"
   changed_when: false
   ignore_errors: true
-
-- name: kubeadm | sysctl --system
-  command: sysctl --system
-  changed_when: false
-  ignore_errors: true
