@@ -136,10 +136,14 @@
 
 - name: tweak sysctl entries
   sysctl:
+    sysctl_file: "/etc/sysctl.conf"
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     state: "{{ item.state | default('present') }}"
+    reload: false
   loop: "{{ kubeadm_sysctl }}"
+  notify:
+    - kubeadm | sysctl --system
   tags: kubeadm
 
 - name: flush handlers
