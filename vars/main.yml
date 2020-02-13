@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubeadm_download:
+  v1.17.3:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubeadm"
+    dest: "/var/cache/ansible/kubeadm-v1.17.3"
+    checksum: "sha1:29923e3b07c6e1616d91a829a99b22dab82840c0"
   v1.17.2:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.2/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/kubeadm-v1.17.2"
@@ -27,6 +31,10 @@ _kubeadm_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/kubeadm-v1.17.0"
     checksum: "sha1:343b5264eddbbe731db692952965d48a9a331aa4"
+  v1.16.7:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.7/bin/linux/amd64/kubeadm"
+    dest: "/var/cache/ansible/kubeadm-v1.16.7"
+    checksum: "sha1:e22f3316a001c267dcbe9218b9916dd447c0ff44"
   v1.16.6:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/kubeadm-v1.16.6"
