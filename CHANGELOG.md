@@ -7,6 +7,7 @@
   - Migrate molecule driver to Libvirt
   - Migrate molecule verifier to Ansible
   - Support Ubuntu 19.10
+  - Tweak `/etc/sysctl.conf` in Ansible style
 
 ## 4.1.0 - 2020-01-16
 
