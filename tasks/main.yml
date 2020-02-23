@@ -81,7 +81,7 @@
   shell: |
     set -o pipefail
     cd /usr/local/bin
-    TMP_DIR="`mktemp -d`" \
+    TMP_DIR="$(mktemp -d)" \
       && cp {{ kubeadm_download.dest }} $TMP_DIR/kubeadm \
       && chown root:root $TMP_DIR/kubeadm \
       && chmod 0755 $TMP_DIR/kubeadm \
