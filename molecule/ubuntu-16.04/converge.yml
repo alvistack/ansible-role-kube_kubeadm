@@ -17,9 +17,18 @@
 - hosts: all
   remote_user: root
   become: true
-  roles:
-    - role: bootstrap
-    - role: python
-    - role: docker
-    - role: kubelet
-    - role: kubeadm
+  tasks:
+    - include_role:
+        name: bootstrap
+
+    - include_role:
+        name: python
+
+    - include_role:
+        name: docker
+
+    - include_role:
+        name: kubelet
+
+    - include_role:
+        name: kubeadm
