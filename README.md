@@ -1,6 +1,6 @@
 # Ansible Role for kubeadm
 
-[![Travis](https://img.shields.io/travis/alvistack/ansible-role-kubeadm.svg)](https://travis-ci.org/alvistack/ansible-role-kubeadm)
+[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-kubeadm.svg)](https://travis-ci.com/alvistack/ansible-role-kubeadm)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kubeadm.svg)](https://github.com/alvistack/ansible-role-kubeadm)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kubeadm.svg)](https://github.com/alvistack/ansible-role-kubeadm/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.kubeadm-blue.svg)](https://galaxy.ansible.com/alvistack/kubeadm)
