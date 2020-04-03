@@ -19,16 +19,7 @@
   become: true
   tasks:
     - include_role:
-        name: bootstrap
-
-    - include_role:
         name: python
-
-    - include_role:
-        name: docker
-
-    - include_role:
-        name: kubelet
 
     - include_role:
         name: kubeadm

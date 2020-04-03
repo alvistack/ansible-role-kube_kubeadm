@@ -20,16 +20,6 @@
   changed_when: false
   ignore_errors: true
 
-- name: kubeadm | systemctl restart
-  service:
-    name: "kubelet"
-    state: "restarted"
-  loop: "{{ ansible_play_hosts }}"
-  delegate_to: "{{ item }}"
-  run_once: true
-  changed_when: false
-  ignore_errors: true
-
 - name: kubeadm | systemctl restart systemd-modules-load
   service:
     name: "systemd-modules-load"
