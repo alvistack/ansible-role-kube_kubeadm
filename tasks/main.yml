@@ -92,7 +92,6 @@
   when: get_url_result is changed
   notify:
     - kubeadm | systemctl daemon-reload
-    - kubeadm | systemctl restart
   tags: kubeadm
 
 - name: copy templates
@@ -106,7 +105,6 @@
     - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
   notify:
     - kubeadm | systemctl daemon-reload
-    - kubeadm | systemctl restart
   tags: kubeadm
 
 - name: tweak modeprobe entries

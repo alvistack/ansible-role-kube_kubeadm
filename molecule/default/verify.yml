@@ -24,12 +24,3 @@
       command: kubeadm version
       register: result
       changed_when: result is not succeeded
-
-    - name: verify connectivity to gcr.io registries
-      environment:
-        PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-      command: kubeadm config images pull
-      register: result
-      until: result is succeeded
-      changed_when: result is not succeeded
-      tags: kubeadm
