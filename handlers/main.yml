@@ -26,7 +26,7 @@
   changed_when: false
   ignore_errors: true
 
-  - name: kubeadm | systemctl daemon-reload
+- name: kubeadm | systemctl daemon-reload
   systemd:
     daemon_reload: true
   changed_when: false
