@@ -14,12 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: kubeadm | systemctl daemon-reload
-  systemd:
-    daemon_reload: true
-  changed_when: false
-  ignore_errors: true
-
 - name: kubeadm | systemctl restart systemd-modules-load
   service:
     name: "systemd-modules-load"
@@ -29,5 +23,11 @@
 
 - name: kubeadm | sysctl --system
   command: sysctl --system
+  changed_when: false
+  ignore_errors: true
+
+- name: kubeadm | systemctl daemon-reload
+  systemd:
+    daemon_reload: true
   changed_when: false
   ignore_errors: true
