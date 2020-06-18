@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Kubernetes version.
-kubernetes_version: "v1.18.3"
+kubernetes_version: "v1.18.4"
 
 # kubeadm version.
 kubeadm_version: "{{ kubernetes_version }}"
