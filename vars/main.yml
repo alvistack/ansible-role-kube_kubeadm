@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubeadm_download:
+  v1.18.6:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.6/bin/linux/amd64/kubeadm"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.6"
+    checksum: "sha1:5d46f971f34b057598f78068bfaecbcda2863413"
   v1.18.5:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.5/bin/linux/amd64/kubeadm"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.5"
@@ -23,10 +27,10 @@ _kubeadm_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.4/bin/linux/amd64/kubeadm"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.4"
     checksum: "sha1:d17b585fe64fcb0bd21fad724a9f899d214e665f"
-  v1.18.3:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.3/bin/linux/amd64/kubeadm"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.3"
-    checksum: "sha1:28619090913443987880712a3388fa26ce50bac1"
+  v1.17.9:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.9/bin/linux/amd64/kubeadm"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.17.9"
+    checksum: "sha1:fd61bdc05f246445dcdd7f3f97812fcdfb964c2e"
   v1.17.8:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.8/bin/linux/amd64/kubeadm"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.17.8"
@@ -35,7 +39,3 @@ _kubeadm_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.7/bin/linux/amd64/kubeadm"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.17.7"
     checksum: "sha1:5fd02ad4cfffc0f67f1ee746e96ffc37673d594c"
-  v1.17.6:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.6/bin/linux/amd64/kubeadm"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.17.6"
-    checksum: "sha1:8e26e9ceed177deff1ace1681c4b775a3888de10"
