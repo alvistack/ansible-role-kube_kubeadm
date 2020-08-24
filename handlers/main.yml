@@ -14,9 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: kubeadm | systemctl restart systemd-modules-load
+- name: kubeadm | systemctl restart systemd-modules-load.service
   service:
-    name: "systemd-modules-load"
+    name: "systemd-modules-load.service"
     state: "restarted"
   changed_when: false
   ignore_errors: true

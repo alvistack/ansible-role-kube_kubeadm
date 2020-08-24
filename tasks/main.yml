@@ -118,7 +118,7 @@
     allow_no_value: true
   loop: "{{ kubeadm_modprobe }}"
   notify:
-    - kubeadm | systemctl restart systemd-modules-load
+    - kubeadm | systemctl restart systemd-modules-load.service
   tags: kubeadm
 
 - name: tweak sysctl entries
