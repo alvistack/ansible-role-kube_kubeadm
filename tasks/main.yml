@@ -56,7 +56,7 @@
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
-    - { dest: "/etc/systemd/system/kubelet.service.d" }
+    - { dest: "/lib/systemd/system/kubelet.service.d" }
     - { dest: "/usr/lib/modules-load.d" }
     - { dest: "/usr/local/bin" }
     - { dest: "/var/lib/kubelet" }
@@ -103,7 +103,7 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
   loop:
-    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
+    - { dest: "/lib/systemd/system/kubelet.service.d/10-kubeadm.conf" }
   notify:
     - kubeadm | systemctl daemon-reload
   tags: kubeadm
@@ -118,7 +118,7 @@
     allow_no_value: true
   loop: "{{ kubeadm_modprobe }}"
   notify:
-    - kubeadm | systemctl restart systemd-modules-load
+    - kubeadm | systemctl restart systemd-modules-load.service
   tags: kubeadm
 
 - name: tweak sysctl entries
@@ -141,7 +141,8 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
+    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf", state: "absent" }
+    - { dest: "/lib/systemd/system/kubelet.service.d/10-kubeadm.conf" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
     - { dest: "/usr/local/bin/kubeadm", mode: "0755" }
   tags: kubeadm
