@@ -14,11 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: apt-get install
+- name: apt-get install procps
   apt:
-    name: "{{ item.name }}"
-    state: "{{ item.state }}"
-  loop: "{{ _apt }}"
+    name: "procps"
+    state: "present"
   register: result
   until: result is succeeded
+  tags: kubeadm
+
+- name: tweak sysctl entries
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state }}"
+    sysctl_file: "/etc/sysctl.conf"
+    reload: false
+  loop: "{{ kubeadm_sysctl }}"
+  notify:
+    - kubeadm | sysctl --system
   tags: kubeadm
