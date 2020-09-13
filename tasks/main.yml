@@ -121,6 +121,18 @@
     - kubeadm | systemctl restart systemd-modules-load.service
   tags: kubeadm
 
+- name: tweak sysctl entries
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state }}"
+    sysctl_file: "/etc/sysctl.conf"
+    reload: false
+  loop: "{{ kubeadm_sysctl }}"
+  notify:
+    - kubeadm | sysctl --system
+  tags: kubeadm
+
 - name: prepare files
   file:
     dest: "{{ item.dest }}"
