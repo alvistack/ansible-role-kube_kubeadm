@@ -16,7 +16,6 @@
 
 - name: include default variables
   include_vars: "../vars/main.yml"
-  tags: kubeadm
 
 - name: include release specific variables
   include_vars: "{{ lookup('first_found', _params) }}"
@@ -31,7 +30,6 @@
       paths:
         - "../vars"
   ignore_errors: true
-  tags: kubeadm
 
 - name: include release specific tasks
   include_tasks: "{{ lookup('first_found', _params) }}"
@@ -46,7 +44,6 @@
       paths:
         - "."
   ignore_errors: true
-  tags: kubeadm
 
 - name: prepare directories
   file:
@@ -61,7 +58,6 @@
     - { dest: "/usr/local/bin" }
     - { dest: "/var/lib/kubelet" }
     - { dest: "{{ kubeadm_download.dest | dirname }}" }
-  tags: kubeadm
 
 - name: download archive
   vars:
@@ -76,7 +72,6 @@
     - "{{ kubeadm_download }}"
   register: get_url_result
   until: get_url_result is succeeded
-  tags: kubeadm
 
 - name: unarchive package
   shell: |
@@ -93,7 +88,6 @@
   when: get_url_result is changed
   notify:
     - kubeadm | systemctl daemon-reload
-  tags: kubeadm
 
 - name: copy templates
   template:
@@ -106,7 +100,6 @@
     - { dest: "/lib/systemd/system/kubelet.service.d/10-kubeadm.conf" }
   notify:
     - kubeadm | systemctl daemon-reload
-  tags: kubeadm
 
 - name: tweak modeprobe entries
   ini_file:
@@ -119,7 +112,6 @@
   loop: "{{ kubeadm_modprobe }}"
   notify:
     - kubeadm | systemctl restart systemd-modules-load.service
-  tags: kubeadm
 
 - name: tweak sysctl entries
   sysctl:
@@ -131,7 +123,6 @@
   loop: "{{ kubeadm_sysctl }}"
   notify:
     - kubeadm | sysctl --system
-  tags: kubeadm
 
 - name: prepare files
   file:
@@ -145,8 +136,6 @@
     - { dest: "/lib/systemd/system/kubelet.service.d/10-kubeadm.conf" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
     - { dest: "/usr/local/bin/kubeadm", mode: "0755" }
-  tags: kubeadm
 
 - name: flush handlers
   meta: flush_handlers
-  tags: kubeadm
