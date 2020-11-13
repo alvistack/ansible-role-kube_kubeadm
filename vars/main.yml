@@ -27,6 +27,10 @@ _kubeadm_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.19.2/bin/linux/amd64/kubeadm"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.19.2"
     checksum: "sha1:d5bf3b9e0f0a0909f84e94d84b61164789a5a561"
+  "v1.18.12":
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.12/bin/linux/amd64/kubeadm"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.12"
+    checksum: "sha1:b60b6e1c64287b7954bf34d90f31758156643cb8"
   "v1.18.11":
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.11/bin/linux/amd64/kubeadm"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.11"
@@ -35,7 +39,3 @@ _kubeadm_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.10/bin/linux/amd64/kubeadm"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.10"
     checksum: "sha1:9b4163970ea1236091927a528079e823e1f09843"
-  "v1.18.9":
-    url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.9/bin/linux/amd64/kubeadm"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubeadm-v1.18.9"
-    checksum: "sha1:ef1a8027bb510a97c7937293931d77c343a8ef1f"
