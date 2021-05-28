@@ -143,7 +143,6 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf", state: "absent" }
     - { dest: "/lib/systemd/system/kubelet.service.d/10-kubeadm.conf" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
     - { dest: "/usr/local/bin/kubeadm", mode: "0755" }
