@@ -15,11 +15,14 @@
 # limitations under the License.
 
 _kubeadm_version:
-  "v1.21": "v1.21.1"
-  "v1.20": "v1.20.7"
-  "v1.19": "v1.19.11"
+  "v1.21": "v1.21.2"
+  "v1.20": "v1.20.8"
 
 _kubeadm_download:
+  "v1.21.2":
+    url: "http://storage.googleapis.com/kubernetes-release/release/v1.21.2/bin/linux/amd64/kubeadm"
+    dest: "/var/cache/ansible/6a83e52e51f41d67658a13ce8ac9deb77a6d82a71ced2d106756f6d38756ec00/kubeadm-v1.21.2"
+    checksum: "6a83e52e51f41d67658a13ce8ac9deb77a6d82a71ced2d106756f6d38756ec00"
   "v1.21.1":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.21.1/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/1553c07a6a777c4cf71d45d5892915f0ea6586b8a80f9fea39e7a659d6315d42/kubeadm-v1.21.1"
@@ -28,6 +31,10 @@ _kubeadm_download:
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/7bdaf0d58f0d286538376bc40b50d7e3ab60a3fe7a0709194f53f1605129550f/kubeadm-v1.21.0"
     checksum: "7bdaf0d58f0d286538376bc40b50d7e3ab60a3fe7a0709194f53f1605129550f"
+  "v1.20.8":
+    url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.8/bin/linux/amd64/kubeadm"
+    dest: "/var/cache/ansible/6fc7f481ba10e204405adec5e398632e70d902099c455f58f454cdb0ca5a7037/kubeadm-v1.20.8"
+    checksum: "6fc7f481ba10e204405adec5e398632e70d902099c455f58f454cdb0ca5a7037"
   "v1.20.7":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.7/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/7bb0b40ea1e44cab716ab12b8bb793b3130373f1d67cf7b888667597fe226c05/kubeadm-v1.20.7"
@@ -36,19 +43,3 @@ _kubeadm_download:
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.6/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/ff6fca46edeccd8a4dbf162079d0b3d27841b04885b3f47f80377b3a93ab1533/kubeadm-v1.20.6"
     checksum: "ff6fca46edeccd8a4dbf162079d0b3d27841b04885b3f47f80377b3a93ab1533"
-  "v1.20.5":
-    url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubeadm"
-    dest: "/var/cache/ansible/eecb68547f0f99951b0ed910dcb0cfa32766587cc79a53960766164a56d6aed0/kubeadm-v1.20.5"
-    checksum: "eecb68547f0f99951b0ed910dcb0cfa32766587cc79a53960766164a56d6aed0"
-  "v1.19.11":
-    url: "http://storage.googleapis.com/kubernetes-release/release/v1.19.11/bin/linux/amd64/kubeadm"
-    dest: "/var/cache/ansible/26ccafbd695335822b3f8a7f4776877aac94f8f6fb19ad50d1122114d6b31517/kubeadm-v1.19.11"
-    checksum: "26ccafbd695335822b3f8a7f4776877aac94f8f6fb19ad50d1122114d6b31517"
-  "v1.19.10":
-    url: "http://storage.googleapis.com/kubernetes-release/release/v1.19.10/bin/linux/amd64/kubeadm"
-    dest: "/var/cache/ansible/aff5ed83e2e3c9466f4b97b53426d9267b51b8cf5466cd375414eaa300c40ad7/kubeadm-v1.19.10"
-    checksum: "aff5ed83e2e3c9466f4b97b53426d9267b51b8cf5466cd375414eaa300c40ad7"
-  "v1.19.9":
-    url: "http://storage.googleapis.com/kubernetes-release/release/v1.19.9/bin/linux/amd64/kubeadm"
-    dest: "/var/cache/ansible/917712bbd38b625aca456ffa78bf134d64f0efb186cc5772c9844ba6d74fd920/kubeadm-v1.19.9"
-    checksum: "917712bbd38b625aca456ffa78bf134d64f0efb186cc5772c9844ba6d74fd920"
