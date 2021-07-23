@@ -1,9 +1,9 @@
 # Ansible Role for kubeadm
 
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-kubeadm/master)](https://gitlab.com/alvistack/ansible-role-kubeadm/-/pipelines)
-[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kubeadm.svg)](https://github.com/alvistack/ansible-role-kubeadm/releases)
-[![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kubeadm.svg)](https://github.com/alvistack/ansible-role-kubeadm/blob/master/LICENSE)
-[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.kubeadm-blue.svg)](https://galaxy.ansible.com/alvistack/kubeadm)
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-kube_kubeadm/master)](https://gitlab.com/alvistack/ansible-role-kube_kubeadm/-/pipelines)
+[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kube_kubeadm.svg)](https://github.com/alvistack/ansible-role-kube_kubeadm/releases)
+[![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kube_kubeadm.svg)](https://github.com/alvistack/ansible-role-kube_kubeadm/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.kube_kubeadm-blue.svg)](https://galaxy.ansible.com/alvistack/kube_kubeadm)
 
 Ansible Role for kubeadm Installation.
 
