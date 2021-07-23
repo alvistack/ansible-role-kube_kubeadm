@@ -28,6 +28,6 @@ roles:
     src: https://github.com/alvistack/ansible-role-cri_tools
     version: develop
 
-  - name: kubelet
-    src: https://github.com/alvistack/ansible-role-kubelet
+  - name: kube_kubelet
+    src: https://github.com/alvistack/ansible-role-kube_kubelet
     version: develop

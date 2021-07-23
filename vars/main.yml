@@ -14,11 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_kubeadm_version:
+_kube_kubeadm_version:
   "1.21": "1.21.3"
   "1.20": "1.20.9"
 
-_kubeadm_download:
+_kube_kubeadm_download:
   "1.21.3":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.21.3/bin/linux/amd64/kubeadm"
     dest: "/var/cache/ansible/82fff4fc0cdb1110150596ab14a3ddcd3dbe53f40c404917d2e9703f8f04787a/kubeadm-v1.21.3"

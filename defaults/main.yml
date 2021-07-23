@@ -15,16 +15,16 @@
 # limitations under the License.
 
 # Kubernetes release.
-kubernetes_release: "1.21"
+kube_release: "1.21"
 
 # kubeadm version.
-kubeadm_version: "{{ _kubeadm_version[kubernetes_release] }}"
+kube_kubeadm_version: "{{ _kube_kubeadm_version[kube_release] }}"
 
 # kubeadm download details.
-kubeadm_download: "{{ _kubeadm_download[kubeadm_version] }}"
+kube_kubeadm_download: "{{ _kube_kubeadm_download[kube_kubeadm_version] }}"
 
 # Kernel modules.
-kubeadm_modprobe:
+kube_kubeadm_modprobe:
   - { state: "present", option: "br_netfilter" }
   - { state: "present", option: "ip_vs" }
   - { state: "present", option: "ip_vs_rr" }
@@ -33,7 +33,7 @@ kubeadm_modprobe:
   - { state: "present", option: "nf_conntrack" }
 
 # Entries for sysctl.
-kubeadm_sysctl:
+kube_kubeadm_sysctl:
   - { state: "present", name: "kernel.pid_max", value: "4194303" }
   - { state: "present", name: "net.bridge.bridge-nf-call-arptables", value: "1" }
   - { state: "present", name: "net.bridge.bridge-nf-call-ip6tables", value: "1" }
