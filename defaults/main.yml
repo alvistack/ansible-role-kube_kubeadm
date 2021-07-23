@@ -15,10 +15,10 @@
 # limitations under the License.
 
 # Kubernetes release.
-kubernetes_release: "1.21"
+kube_release: "1.21"
 
 # kubeadm version.
-kubeadm_version: "{{ _kubeadm_version[kubernetes_release] }}"
+kubeadm_version: "{{ _kubeadm_version[kube_release] }}"
 
 # kubeadm download details.
 kubeadm_download: "{{ _kubeadm_download[kubeadm_version] }}"
