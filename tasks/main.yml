@@ -63,45 +63,7 @@
   loop:
     - { dest: "/etc/systemd/system/kubelet.service.d" }
     - { dest: "/usr/lib/modules-load.d" }
-    - { dest: "/usr/local/bin" }
     - { dest: "/var/lib/kubelet" }
-
-- name: download archive
-  shell: |
-    set -euxo pipefail
-    mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ kube_kubeadm_download.checksum }}-get_url.log)
-    TMP_DIR="$(mktemp -d)" \
-      && cd $TMP_DIR \
-      && mkdir -p .{{ kube_kubeadm_download.dest | dirname }} \
-      && curl -skL -m 300 {{ kube_kubeadm_download.url }} > .{{ kube_kubeadm_download.dest }} \
-      && echo -n "{{ kube_kubeadm_download.checksum }} .{{ kube_kubeadm_download.dest }}" | sha256sum -c - \
-      && mkdir -p {{ kube_kubeadm_download.dest | dirname }} \
-      && mv .{{ kube_kubeadm_download.dest }} {{ kube_kubeadm_download.dest }} \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ kube_kubeadm_download.checksum }}-get_url.log"
-  register: result
-  until: result is succeeded
-
-- name: unarchive package
-  shell: |
-    set -euxo pipefail
-    mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ kube_kubeadm_download.checksum }}-unarchive.log)
-    cd /usr/local/bin
-    TMP_DIR="$(mktemp -d)" \
-      && cp {{ kube_kubeadm_download.dest }} $TMP_DIR/kubeadm \
-      && chown root:root $TMP_DIR/kubeadm \
-      && chmod 0755 $TMP_DIR/kubeadm \
-      && mv $TMP_DIR/kubeadm . \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ kube_kubeadm_download.checksum }}-unarchive.log"
-  notify:
-    - kube_kubeadm | systemctl daemon-reload
 
 - name: copy templates
   template:
@@ -148,7 +110,6 @@
   loop:
     - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
-    - { dest: "/usr/local/bin/kubeadm", mode: "0755" }
 
 - name: flush handlers
   meta: flush_handlers
