@@ -1,5 +1,7 @@
 # Ansible Role for kubeadm
 
+<img src="/alvistack.svg" width="75" alt="AlviStack">
+
 [![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-kube_kubeadm/master)](https://gitlab.com/alvistack/ansible-role-kube_kubeadm/-/pipelines)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kube_kubeadm.svg)](https://github.com/alvistack/ansible-role-kube_kubeadm/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kube_kubeadm.svg)](https://github.com/alvistack/ansible-role-kube_kubeadm/blob/master/LICENSE)
