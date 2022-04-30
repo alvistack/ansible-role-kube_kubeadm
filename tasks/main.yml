@@ -98,7 +98,7 @@
     reload: false
   loop: "{{ kube_kubeadm_sysctl }}"
   notify:
-    - kube_kubeadm | sysctl --system
+    - kube_kubeadm | systemctl restart systemd-sysctl.service
 
 - name: prepare files
   ansible.builtin.file:
