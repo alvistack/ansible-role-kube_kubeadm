@@ -61,21 +61,7 @@
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
-    - { dest: "/etc/systemd/system/kubelet.service.d" }
     - { dest: "/usr/lib/modules-load.d" }
-    - { dest: "/var/lib/kubelet" }
-
-- name: copy templates
-  ansible.builtin.template:
-    dest: "{{ item.dest }}"
-    src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-  loop:
-    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
-  notify:
-    - kube_kubeadm | systemctl daemon-reload
 
 - name: tweak modeprobe entries
   ini_file:
@@ -108,8 +94,10 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" }
+    - { dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf", state: "absent" }
     - { dest: "/usr/lib/modules-load.d/kubeadm.conf" }
+  notify:
+    - kube_kubeadm | systemctl daemon-reload
 
 - name: flush handlers
   ansible.builtin.meta: flush_handlers
