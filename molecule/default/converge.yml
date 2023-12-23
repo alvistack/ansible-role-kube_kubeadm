@@ -22,19 +22,15 @@
     - name: include role
       ansible.builtin.include_role:
         name: alvistack.containernetworking_plugins
-      tags: alvistack.containernetworking_plugins
 
     - name: include role
       ansible.builtin.include_role:
         name: alvistack.cri_tools
-      tags: alvistack.cri_tools
 
     - name: include role
       ansible.builtin.include_role:
         name: alvistack.kube_kubelet
-      tags: alvistack.kube_kubelet
 
     - name: include role
       ansible.builtin.include_role:
         name: alvistack.kube_kubeadm
-      tags: alvistack.kube_kubeadm
