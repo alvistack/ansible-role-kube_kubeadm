@@ -18,7 +18,7 @@
 kube_release: "{{ _kube_release }}"
 
 # kubeadm version.
-kube_kubeadm_version: "{{ _kube_kubeadm_version[kube_release] }}"
+kube_kubeadm_version: "{{ _kube_kubeadm_version }}"
 
 # Kernel modules.
 kube_kubeadm_modprobe:
